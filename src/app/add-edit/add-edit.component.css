@@ -1,0 +1,42 @@
+/* Add your CSS styles here */
+
+/* Style the form container */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the dialog title */
+  mat-dialog-title h2 {
+    font-size: 24px;
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Style the form fields */
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  /* Style the buttons */
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+  
+  /* Style the Save button */
+  button.mat-raised-button[color="primary"] {
+    background-color: #1976D2;
+    color: white;
+  }
+  
+  /* Style the Cancel button */
+  button.mat-raised-button {
+    margin-right: 8px;
+  }
+  
