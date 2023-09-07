@@ -30,7 +30,7 @@ export class AddEditComponent implements OnInit{
 
 onFormSubmit() {
   if(this.Form.valid){
-    if(this.data){this._resService.updaterestaurant(this.data.String,this.Form.value).subscribe({
+    if(this.data){this._resService.updaterestaurant(this.data.Name,this.Form.value).subscribe({
       next:(val:any) =>{
         alert('Restaurant detail updated');
         this._dialogRef.close(true);
@@ -54,18 +54,7 @@ onFormSubmit() {
       },
     });
 
-    }
-    this._resService.addrestaurant(this.Form.value).subscribe({
-      next:(val:any) =>{
-        alert('Restaurant added successfully');
-        this._dialogRef.close(true);
-        console.log('Form submitted');
-
-      },
-      error:(err:any) => {
-        console.error(err);
-      },
-    });
+  }
    
   }
 }

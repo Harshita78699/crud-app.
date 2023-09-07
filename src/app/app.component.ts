@@ -5,6 +5,7 @@ import { RestaurantService } from './services/restaurant.service';
 import { MatTableDataSource } from '@angular/material/table';
 import jsonData from '../../db.json'; 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getrestaurantlist();
     this.jsonData = jsonData; // JSON data to jsonData
-    //this.jsonData = JSON.parse(jsonData);
+   
   }
 
   openAddEditForm() {
@@ -48,28 +49,24 @@ export class AppComponent implements OnInit {
         console.log(err)
     });
   }
-  deleterestaurant(Name:String) {
-    this._resService.deleterestaurant(Name).subscribe({
-      next:(res) => {
-        alert('restaurant deleted!');
-        this.getrestaurantlist();
 
-      },
-     error: console.log,
-      
-    });
+  deleterestaurant(Name: string) {
+    if (confirm('Are you sure you want to delete this?')) {
+      this._resService.deleterestaurant(Name).subscribe({
+        next: (res) => {
+          alert('Restaurant deleted!');
+          this.getrestaurantlist();
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+    }
   }
-  
   openEditForm(data:any) {
     this._dialog.open(AddEditComponent,{
       data,
     });
-   
-
-
-
-
-   
         }
       }
 
