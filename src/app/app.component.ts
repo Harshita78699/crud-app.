@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   displayedColumns: string[] = ['Name', 'ContactNumber', 'Address', 'Service','Action']; // Define column names 
   dataSource: any;
   jsonData: any[] = [];
+  
 
   constructor(private _dialog: MatDialog, private _resService: RestaurantService) { }
 
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit {
       },
       error: (err) =>
         console.log(err)
+    
     });
   }
 
@@ -56,12 +58,16 @@ export class AppComponent implements OnInit {
         next: (res) => {
           alert('Restaurant deleted!');
           this.getrestaurantlist();
+         
         },
         error: (err) => {
           console.error(err);
         },
       });
     }
+  }
+  rowClick(row: any) {
+  
   }
   openEditForm(data:any) {
     this._dialog.open(AddEditComponent,{

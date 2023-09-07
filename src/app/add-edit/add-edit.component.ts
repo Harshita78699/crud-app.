@@ -17,12 +17,18 @@ export class AddEditComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data:any
     ) {
     this.Form = this._fb.group({
-      Name: '',
-      ContactNumber:'',
+     Name: '',
+     ContactNumber:'',
       Address:'',
       Service:'',
 
-    })
+     
+        //Name: this.data ? this.data.Name : '', // Initialize with the data if available
+       // ContactNumber: this.data ? this.data.ContactNumber : '', // Initialize with the data if available
+       // Address: this.data ? this.data.Address : '', // Initialize with the data if available
+       // Service: this.data ? this.data.Service : '', // Initialize with the data if available
+
+    });
   }
   ngOnInit(): void {
     this.Form.patchValue(this.data);

@@ -1,8 +1,9 @@
+
 <p>
   <mat-toolbar color="primary">
     <span>Restaurant Survey</span>
     <span class="example-spacer"></span>
-    <button mat-raised-button (click)="openAddEditForm()"> <!-- Add parentheses here -->
+    <button mat-raised-button (click)="openAddEditForm()"> 
       Add
     </button>
   </mat-toolbar>
@@ -47,17 +48,8 @@
     </td>
     
   </ng-container>
-
-
-
-
-
- 
-
- 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>          <!-- header row -->
   
   
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>     <!-- data rows -->
 </table>
-
