@@ -10,7 +10,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>ContactNumber</mat-label>
-      <input matInput type="tel" placeholder="123-456-7890" formControlName="ContactNumber">
+      <input matInput type="tel" placeholder="1234567890" formControlName="ContactNumber">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Address</mat-label>
@@ -22,7 +22,7 @@
       </mat-form-field>
   </div>
   <div mat-dialog-actions>
-    <button mat-raised-button>Cancel</button>
-    <button mat-raised-button color="primary" type="submit">Save</button>
+    <button mat-raised-button type="button" [mat-dialog-close] ="false">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
   </div>
   </form>

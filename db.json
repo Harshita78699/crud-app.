@@ -1,20 +1,33 @@
+
+
+[  
+  
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
-  "restaurant":[]
+  "Name": "Harshita",
+  "ContactNumber":1234567890 ,
+  "Address": "123 Main St",
+  "Service": "Lunch"
+},
+{
+  "Name": "Honey",
+  "ContactNumber": 6789559921,
+  "Address": "Suvidhanagar",
+  "Service": "lunch"
+},
+{
+  "Name": "Alina",
+  "ContactNumber": 9966655145,
+  "Address": "Kota",
+  "Service": "Breakfast"
+},
+{
+  "Name": "Sneha",
+  "ContactNumber": 9871559961,
+  "Address": "Kota",
+  "Service": "Coffee"
 }
+
+
+
+
+]
