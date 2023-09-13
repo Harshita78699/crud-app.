@@ -1,7 +1,10 @@
+// 
+
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditComponent } from './add-edit/add-edit.component';
-import { RestaurantService } from './services/restaurant.service';
+
 import { MatTableDataSource } from '@angular/material/table';
 import jsonData from '../../db.json'; 
 
@@ -19,15 +22,14 @@ export class AppComponent implements OnInit {
   jsonData: any[] = [];
   
 
-  constructor(private _dialog: MatDialog, private _resService: RestaurantService) { }
+   constructor(private _dialog: MatDialog,) { }
 
   ngOnInit(): void {
-    this.getrestaurantlist();
-    this.jsonData = jsonData; // JSON data to jsonData
-   
+    this.getrestaurantlist();   
   }
 
   openAddEditForm() {
+    console.log('openAddEditForm');
     const DialogRef = this._dialog.open(AddEditComponent);
     DialogRef.afterClosed().subscribe({
       next:(val) =>{
@@ -40,30 +42,36 @@ export class AppComponent implements OnInit {
   }
 
   getrestaurantlist() {
-    this._resService.getrestaurantlist().subscribe({
-      next: (res) => {
-        this.jsonData = res; // Assign the JSON data to the jsonData property
+    // this._resService.getrestaurantlist().subscribe({
+    //   next: (res) => {
+    //     this.jsonData = res; // Assign the JSON data to the jsonData property
 
-        this.dataSource = new MatTableDataSource(res);
-      },
-      error: (err) =>
-        console.log(err)
+    //     this.dataSource = new MatTableDataSource(res);
+    //   },
+
+    //   error: (err) =>
+    //     console.log(err)
     
-    });
+    // });
+    this.jsonData = jsonData; // JSON data to jsonData
   }
 
-  deleterestaurant(Name: string) {
-    if (confirm('Are you sure you want to delete this?')) {
-      this._resService.deleterestaurant(Name).subscribe({
-        next: (res) => {
-          alert('Restaurant deleted!');
-          this.getrestaurantlist();
+  deleterestaurant(id: string) {
+    console.log(id, 'id');
+    // if (confirm('Are you sure you want to delete this?')) {
+    //   this._resService.deleterestaurant(Name).subscribe({
+    //     next: (res) => {
+    //       alert('Restaurant deleted!');
+    //       this.getrestaurantlist();
          
-        },
-        error: (err) => {
-          console.error(err);
-        },
-      });
+    //     },
+    //     error: (err) => {
+    //       console.error(err);
+    //     },
+    //   });
+    // }
+    if (confirm('Are you sure you want to delete this?')) {
+      this.jsonData = this.jsonData.filter((element) => { return  element.id !== id });
     }
   }
   rowClick(row: any) {
@@ -75,10 +83,3 @@ export class AppComponent implements OnInit {
     });
         }
       }
-
-  
-
-
-
-
-

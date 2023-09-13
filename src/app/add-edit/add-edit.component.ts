@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { RestaurantService } from '../services/restaurant.service';
+
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -10,10 +10,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class AddEditComponent implements OnInit{
   Form: FormGroup;
+  initialData: any;
 
 
 
-  constructor(private _fb: FormBuilder, private _resService:RestaurantService, private _dialogRef: MatDialogRef<AddEditComponent>,
+  constructor(private _fb: FormBuilder,  private _dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data:any
     ) {
     this.Form = this._fb.group({
@@ -31,38 +32,44 @@ export class AddEditComponent implements OnInit{
     });
   }
   ngOnInit(): void {
-    this.Form.patchValue(this.data);
+    //this.Form.patchValue(this.data);
+    // if (this.initialData) {
+    
+    //   this.Form.setValue({
+    //     Name: this.initialData.Name || '',
+    //     ContactNumber: this.initialData.ContactNumber || '',
+    //     Address: this.initialData.Address || '',
+    //     Service: this.initialData.Service || ''
+    //   });
+    //   this.data = this.initialData;
+    // }
   }
 
-onFormSubmit() {
-  if(this.Form.valid){
-    if(this.data){this._resService.updaterestaurant(this.data.Name,this.Form.value).subscribe({
-      next:(val:any) =>{
-        alert('Restaurant detail updated');
-        this._dialogRef.close(true);
-        console.log('Form submitted');
+  onFormSubmit() {
+    if (this.Form.valid) {
+     // let valueForm =this.Form.value.Name;
+     // this.Form.value.Name =valueForm;
+      this._dialogRef.close(this.Form.value);
+     
 
-      },
-      error:(err:any) => {
-        console.error(err);
-      },
-    });
-
-    } else{this._resService.addrestaurant(this.Form.value).subscribe({
-      next:(val:any) =>{
-        alert('Restaurant added successfully');
-        this._dialogRef.close(true);
-        console.log('Form submitted');
-
-      },
-      error:(err:any) => {
-        console.error(err);
-      },
-    });
-
-  }
+        
+    //     alert('Restaurant detail updated');
+    //     this._dialogRef.close(this.data);
+    //     console.log('Form submitted update');
+    //   } else {
+    //     this.data = this.Form.value;
+    //     alert('Restaurant added successfully');
+    //     this._dialogRef.close(this.data);
+    //     console.log('Form submitted for add');
+    //   }
+    // } else {
+      
+    //   console.log('Form validation failed');
+    
+     }
    
   }
 }
 
-}
+  
+
